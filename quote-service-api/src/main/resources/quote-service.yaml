@@ -1,0 +1,75 @@
+openapi: '3.1.0'
+info:
+  contact:
+    email: adri@jeeistcool.com
+    name: Adri
+  title: Quote-Service
+  description: >-
+    A Quote Service to persist weird / inspirational things someone said
+  license:
+    name: GNU General Public License
+    url: https://www.gnu.org/licenses/gpl-3.0.html
+  version: '1.0.0'
+tags:
+  - name: User
+    description: All User based Operations
+  - name: Quote
+    description: All Quote based Operations
+  - name: Namespace
+    description: All Namespace based Operations
+  - name: Session
+    description: All Session based Operations
+paths:
+  /v1/session:
+    post:
+      description: Login to your Session or create a new one
+      tags:
+        - Session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginUser'
+      responses:
+        '201':
+          description: A new Session has been created or the session has been attached successfully
+          headers:
+            JSESSIONID:
+              description: The Session Id that needs to be sent when an Session based Operation shall be performed
+              required: true
+              schema:
+                type: string
+                examples:
+                  - 'lkwsfvklhfklashfhasf'
+    delete:
+      description: Delete your current active Session
+      tags:
+        - Session
+      responses:
+        '204':
+          description: The Session is now gone.
+components:
+  schemas:
+    LoginUser:
+      type: object
+      description: A User Object that is used to login to the Service. Either the username or email can be null
+      properties:
+        username:
+          description: The Username of the specific User
+          type: string
+          examples:
+            - 'Tommy'
+        email:
+          description: The Email of the specific User
+          type: string
+          format: email
+          examples:
+            - 'Tommy@tommy.com'
+        password:
+          description: A MD5 hashed representation of the Password
+          maxLength: 32
+          minLength: 32
+          examples:
+            - 'D1BF93299DE1B68E6D382C893BF1215F'
+          type: string

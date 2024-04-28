@@ -6,10 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Collections;
 
 @SpringBootTest
+@ActiveProfiles("prod")
 class QuoteServiceApplicationTests {
     @Mock
     private QuoteRepository repository;
