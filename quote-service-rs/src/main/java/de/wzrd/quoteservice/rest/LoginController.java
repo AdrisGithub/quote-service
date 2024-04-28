@@ -23,14 +23,6 @@ public class LoginController implements SessionApi {
     private UUID id;
 
     @Override
-    public ResponseEntity<Void> addSession(LoginUser loginUser) {
-        if (Objects.isNull(id)) {
-            this.id = UUID.randomUUID();
-        }
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
-    @Override
     public ResponseEntity<Void> deleteSession() {
         this.id = null;
         return ResponseEntity.noContent().build();
@@ -48,6 +40,14 @@ public class LoginController implements SessionApi {
                         .lastName("")
                         .firstName("")
         );
+    }
+
+    @Override
+    public ResponseEntity<Void> useSession(LoginUser loginUser) {
+        if (Objects.isNull(id)) {
+            this.id = UUID.randomUUID();
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
 }

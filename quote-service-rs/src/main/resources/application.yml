@@ -4,7 +4,7 @@ spring:
   banner:
     location:
       classpath:banner.txt
-# Database
+  # Database
   datasource:
     url: jdbc:h2:mem:QSDS
     username: sa

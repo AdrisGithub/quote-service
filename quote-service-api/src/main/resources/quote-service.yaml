@@ -20,9 +20,9 @@ tags:
   - name: Session
     description: All Session based Operations
 paths:
-  /v1/session:
+  /v1/session/login:
     post:
-      operationId: addSession
+      operationId: useSession
       description: Login to your Session or create a new one
       tags:
         - Session
@@ -35,6 +35,11 @@ paths:
       responses:
         '201':
           description: A new Session has been created or the session has been attached successfully
+        '400':
+          description: There was no User found to that specific Login credentials or the account got blocked
+        '429':
+          description: You called the api to often and got a request timeout
+  /v1/session/:
     get:
       operationId: getSession
       description: Get the associated user to this Session
@@ -43,6 +48,8 @@ paths:
       responses:
         '404':
           description: No associated Session was found
+        '401':
+          description: Unauthorized
         '200':
           description: The associated User has been found
           content:
@@ -101,15 +108,18 @@ components:
           examples:
             - 'Schom'
         alias:
+          description: This shouldn't be the username cause this would be a security problem
           type: string
           examples:
             - 'TommySchommy'
         created_at:
+          description: Time when the User got created
           type: string
           format: date-time
           examples:
             - '2024-04-28T19:40:01.53072956+02:00'
         id:
+          description: The Id of the User
           type: string
           maxLength: 16
           minLength: 16
