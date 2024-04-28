@@ -11,7 +11,7 @@
 
     <groupId>de.wzrd</groupId>
     <artifactId>quote-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>quote-service</name>
     <description>Demo Project to persist and visualize Quotes</description>

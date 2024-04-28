@@ -9,7 +9,7 @@ info:
   license:
     name: GNU General Public License
     url: https://www.gnu.org/licenses/gpl-3.0.html
-  version: '1.0.0'
+  version: '1.0.0-SNAPSHOT'
 tags:
   - name: User
     description: All User based Operations
