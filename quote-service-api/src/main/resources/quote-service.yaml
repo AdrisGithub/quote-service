@@ -35,14 +35,6 @@ paths:
       responses:
         '201':
           description: A new Session has been created or the session has been attached successfully
-          headers:
-            JSESSIONID:
-              description: The Session Id that needs to be sent when an Session based Operation shall be performed
-              required: true
-              schema:
-                type: string
-                examples:
-                  - 'lkwsfvklhfklashfhasf'
     get:
       operationId: getSession
       description: Get the associated user to this Session
