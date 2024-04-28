@@ -43,6 +43,20 @@ paths:
                 type: string
                 examples:
                   - 'lkwsfvklhfklashfhasf'
+    get:
+      operationId: getSession
+      description: Get the associated user to this Session
+      tags:
+        - Session
+      responses:
+        '404':
+          description: No associated Session was found
+        '200':
+          description: The associated User has been found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUser'
     delete:
       operationId: deleteSession
       description: Delete your current active Session
@@ -56,12 +70,14 @@ components:
     LoginUser:
       type: object
       description: A User Object that is used to login to the Service. Either the username or email can be null
+      required:
+        - password
       properties:
         username:
           description: The Username of the specific User
           type: string
           examples:
-            - 'Tommy'
+            - 'tommy4at'
         email:
           description: The Email of the specific User
           type: string
@@ -75,3 +91,35 @@ components:
           examples:
             - 'D1BF93299DE1B68E6D382C893BF1215F'
           type: string
+    GetUser:
+      type: object
+      description: A User Object containing all the Info about this user
+      required:
+        - firstName
+        - lastName
+        - created_at
+        - id
+      properties:
+        firstName:
+          type: string
+          examples:
+            - 'Tommy'
+        lastName:
+          type: string
+          examples:
+            - 'Schom'
+        alias:
+          type: string
+          examples:
+            - 'TommySchommy'
+        created_at:
+          type: string
+          format: date-time
+          examples:
+            - '2024-04-28T19:40:01.53072956+02:00'
+        id:
+          type: string
+          maxLength: 16
+          minLength: 16
+          examples:
+            - 'f90d4ac1-bcc8-4760-8ad1-e0d3a447703b'
