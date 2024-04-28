@@ -20,7 +20,7 @@ tags:
   - name: Session
     description: All Session based Operations
 paths:
-  /v1/session/login:
+  /v1/sessions/login:
     post:
       operationId: useSession
       description: Login to your Session or create a new one
@@ -39,7 +39,7 @@ paths:
           description: There was no User found to that specific Login credentials or the account got blocked
         '429':
           description: You called the api to often and got a request timeout
-  /v1/session/:
+  /v1/sessions/:
     get:
       operationId: getSession
       description: Get the associated user to this Session

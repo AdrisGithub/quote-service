@@ -14,3 +14,20 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create
+  # Request Limiting
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+bucket4j:
+  enabled: true
+  filters:
+    - id: idk
+      cache-name: buckets
+      url: '/v1/session/login(|/).*'
+      rate-limits:
+        - bandwidths:
+          - capacity: 4
+            time: 50
+            unit: seconds
+  filter-config-cache-name: filterConfigCache
+  filter-config-caching-enabled: true
