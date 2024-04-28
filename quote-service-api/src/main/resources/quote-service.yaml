@@ -22,6 +22,7 @@ tags:
 paths:
   /v1/session:
     post:
+      operationId: addSession
       description: Login to your Session or create a new one
       tags:
         - Session
@@ -43,6 +44,7 @@ paths:
                 examples:
                   - 'lkwsfvklhfklashfhasf'
     delete:
+      operationId: deleteSession
       description: Delete your current active Session
       tags:
         - Session

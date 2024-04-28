@@ -62,6 +62,7 @@
                                 <booleanGetterPrefix>is</booleanGetterPrefix>
                                 <interfaceOnly>true</interfaceOnly>
                                 <skipDefaultInterface>true</skipDefaultInterface>
+                                <useTags>true</useTags>
                             </configOptions>
                             <generateSupportingFiles>false</generateSupportingFiles>
                         </configuration>
