@@ -1,4 +1,4 @@
-# Quote Service <small><small><small> v1.0.0-SNAPSHOT </small></small></small>
+# Quote Service <small><small><small> v1.0.0 </small></small></small>
 
 A Quote Service to persist weird / inspirational things someone said
 
